@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            text-align: center;
+            background: linear-gradient(135deg, #f0f8ff, #d3e0ea); /* Gradient background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            position: fixed;
+            width: 100%;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for text */
+        }
+
+        canvas {
+            border: 3px solid #3498db; /* Border for the canvas */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for the canvas */
+            background: black;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the button */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05); /* Slightly enlarge button on hover */
+        }
+
+        button:active {
+            background-color: #1f6d9d;
+            transform: scale(0.95); /* Slightly shrink button on click */
+        }
+    </style>
+</head>
+<body>
+    <h1>Pong Game</h1>
+    <canvas></canvas>
+    <p>Control the left player by using up and down arrow keys</p>
+    <button id="restart-btn">Restart Game</button>
+    <script src="./script.js"></script>
+</body>
+</html>

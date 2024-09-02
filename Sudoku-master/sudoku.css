@@ -1,0 +1,117 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #e0eafc, #cfdef3); /* Soft gradient background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Horizontal Rule */
+hr {
+    width: 80%;
+    border: none;
+    border-top: 2px solid #333;
+    margin: 20px auto;
+}
+
+/* Errors Display */
+#errors {
+    color: coral;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Board Styling */
+#board {
+    width: 450px;
+    height: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 10px; /* Rounded corners for the board */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Tile Styling */
+.tile {
+    width: 48px; 
+    height: 48px;
+    border: 1px solid #ddd; /* Lighter border */
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9; /* Light background for tiles */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition effects */
+}
+
+.tile:hover {
+    background-color: #e0e0e0; /* Slightly darker on hover */
+    border-color: #bbb; /* Darker border on hover */
+}
+
+/* Digits Container Styling */
+#digits {
+    width: 450px;
+    height: 60px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Number Button Styling */
+.number {
+    width: 44px; 
+    height: 44px;
+    border: 1px solid #333;
+    margin: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.number:hover {
+    background-color: #f0f0f0; /* Slightly darker on hover */
+    transform: scale(1.05); /* Slightly enlarge */
+}
+
+.number-selected {
+    background-color: #ddd; /* Slightly gray for selected number */
+}
+
+/* Restart Button Styling */
+#restart-btn {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    padding: 12px 24px; /* Increased padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px; /* Slightly larger font size */
+    margin: 20px 0;
+    cursor: pointer;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#restart-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+#restart-btn:active {
+    background-color: #388e3c;
+    transform: scale(0.95);
+}
