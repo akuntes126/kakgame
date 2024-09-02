@@ -1,0 +1,42 @@
+/* General Body Styling */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #000046, #1e1e1e); /* Space-themed gradient background */
+}
+
+/* Canvas Styling */
+#board {
+    background-color: black;
+    border: 2px solid #00ff00; /* Bright green border to match space theme */
+    box-shadow: 0 0 10px #00ff00; /* Glow effect */
+    display: block;
+    margin: 20px auto;
+}
+
+/* Restart Button Styling */
+button {
+    background-color: #ff0044; /* Vibrant red color */
+    border: none; /* Remove default border */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding */
+    font-size: 18px; /* Larger font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    margin: 20px;
+}
+
+/* Restart Button Hover Effects */
+button:hover {
+    background-color: #cc0033; /* Slightly darker red */
+    transform: scale(1.05); /* Slightly enlarge button */
+}
+
+/* Restart Button Active Effects */
+button:active {
+    background-color: #990022; /* Even darker red */
+    transform: scale(0.95); /* Slightly shrink button */
+}

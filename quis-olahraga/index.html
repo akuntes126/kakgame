@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Olahraga</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('olahraga.jpg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .quiz-container {
+            background: #e6c613;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .answers {
+            margin-bottom: 20px;
+        }
+        .answer-button {
+            display: block;
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #ebd76b;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            text-align: center;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .answer-button:hover {
+            background-color: #d4b93f;
+            transform: scale(1.05);
+        }
+        .hidden {
+            display: none;
+        }
+        #next-button {
+            background-color: #28a745;
+        }
+        #next-button:hover {
+            background-color: #218838;
+        }
+        #restart-button {
+            background-color: #007bff;
+        }   
+        #restart-button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 20px;
+            color: #666;
+        }
+        .score-container {
+            text-align: center;
+        }
+        .score-container h2 {
+            font-size: 1.5em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div id="question-container">
+            <div class="question" id="question-text"></div>
+            <div class="answers" id="answer-buttons"></div>
+        </div>
+        <button id="next-button" class="hidden">Next</button>
+        <div class="score-container hidden" id="score-container">
+            <h2>Skor Akhir Anda:</h2>
+            <div id="score-text"></div>
+            <button id="restart-button">Mulai Lagi</button>
+        </div>
+        <div class="footer">Kuis Olahraga - 2024</div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: 'Siapa pemain sepak bola yang dikenal sebagai "CR7"?',
+                answers: [
+                    { text: 'Lionel Messi', correct: false },
+                    { text: 'Cristiano Ronaldo', correct: true },
+                    { text: 'Neymar', correct: false },
+                    { text: 'Kylian Mbappé', correct: false }
+                ]
+            },
+            {
+                question: 'Tim mana yang memenangkan Piala Dunia FIFA 2018?',
+                answers: [
+                    { text: 'Jerman', correct: false },
+                    { text: 'Brasil', correct: false },
+                    { text: 'Prancis', correct: true },
+                    { text: 'Argentina', correct: false }
+                ]
+            },
+            {
+                question: 'Apa nama stadion yang menjadi kandang FC Barcelona?',
+                answers: [
+                    { text: 'Santiago Bernabéu', correct: false },
+                    { text: 'Allianz Arena', correct: false },
+                    { text: 'Camp Nou', correct: true },
+                    { text: 'Old Trafford', correct: false }
+                ]
+            },
+            {
+                question: 'Olahraga apa yang dimainkan dengan raket dan shuttlecock?',
+                answers: [
+                    { text: 'Tenis', correct: false },
+                    { text: 'Squash', correct: false },
+                    { text: 'Badminton', correct: true },
+                    { text: 'Ping pong', correct: false }
+                ]
+            },
+            {
+                question: 'Atlet mana yang dikenal sebagai "Usain Bolt"?',
+                answers: [
+                    { text: 'Pelari', correct: true },
+                    { text: 'Perenang', correct: false },
+                    { text: 'Pemain bola basket', correct: false },
+                    { text: 'Pegulat', correct: false }
+                ]
+            },
+            {
+                question: 'Apa nama turnamen tenis yang diadakan setiap tahun di Wimbledon?',
+                answers: [
+                    { text: 'US Open', correct: false },
+                    { text: 'Australian Open', correct: false },
+                    { text: 'Roland Garros', correct: false },
+                    { text: 'Wimbledon', correct: true }
+                ]
+            },
+            {
+                question: 'Dalam olahraga sepak bola, berapa jumlah pemain di setiap tim dalam pertandingan resmi?',
+                answers: [
+                    { text: '9', correct: false },
+                    { text: '10', correct: false },
+                    { text: '11', correct: true },
+                    { text: '12', correct: false }
+                ]
+            },
+            {
+                question: 'Siapa juara dunia Formula 1 2020?',
+                answers: [
+                    { text: 'Lewis Hamilton', correct: true },
+                    { text: 'Sebastian Vettel', correct: false },
+                    { text: 'Max Verstappen', correct: false },
+                    { text: 'Charles Leclerc', correct: false }
+                ]
+            },
+            {
+                question: 'Apa nama olahraga yang melibatkan bola basket dan ring yang dipasang di kedua ujung lapangan?',
+                answers: [
+                    { text: 'Bola Voli', correct: false },
+                    { text: 'Bola Basket', correct: true },
+                    { text: 'Sepak Bola', correct: false },
+                    { text: 'Hoki', correct: false }
+                ]
+            },
+            {
+                question: 'Dalam olahraga golf, apa nama alat yang digunakan untuk memukul bola?',
+                answers: [
+                    { text: 'Raket', correct: false },
+                    { text: 'Club', correct: true },
+                    { text: 'Kepala', correct: false },
+                    { text: 'Stick', correct: false }
+                ]
+            }
+        ];
+
+        const harderQuestions = [
+            {
+                question: 'Apa nama pelatih yang memimpin Tim Nasional Inggris pada Piala Dunia 1966?',
+                answers: [
+                    { text: 'Alf Ramsey', correct: true },
+                    { text: 'Bobby Robson', correct: false },
+                    { text: 'Ron Greenwood', correct: false },
+                    { text: 'Gareth Southgate', correct: false }
+                ]
+            },
+            {
+                question: 'Tim mana yang memenangkan NBA Finals 2021?',
+                answers: [
+                    { text: 'Brooklyn Nets', correct: false },
+                    { text: 'Phoenix Suns', correct: false },
+                    { text: 'Milwaukee Bucks', correct: true },
+                    { text: 'Los Angeles Lakers', correct: false }
+                ]
+            },
+            {
+                question: 'Siapa pemegang rekor dunia untuk lompatan jauh putra dalam olahraga atletik?',
+                answers: [
+                    { text: 'Bob Beamon', correct: false },
+                    { text: 'Mike Powell', correct: true },
+                    { text: 'Carl Lewis', correct: false },
+                    { text: 'Jesse Owens', correct: false }
+                ]
+            },
+            {
+                question: 'Apa nama olahraga yang dimainkan di lapangan berbentuk heksagonal dan menggunakan bola besar?',
+                answers: [
+                    { text: 'Kriket', correct: false },
+                    { text: 'Hoki Lapangan', correct: true },
+                    { text: 'Rugby', correct: false },
+                    { text: 'Baseball', correct: false }
+                ]
+            },
+            {
+                question: 'Siapa atlet yang memenangkan 8 medali emas di Olimpiade 2008?',
+                answers: [
+                    { text: 'Usain Bolt', correct: false },
+                    { text: 'Michael Phelps', correct: true },
+                    { text: 'Ryan Lochte', correct: false },
+                    { text: 'Carl Lewis', correct: false }
+                ]
+            },
+            {
+                question: 'Apa nama tim nasional sepak bola pria yang dikenal sebagai "The Red Devils"?',
+                answers: [
+                    { text: 'Belgia', correct: true },
+                    { text: 'Belanda', correct: false },
+                    { text: 'Brasil', correct: false },
+                    { text: 'Argentina', correct: false }
+                ]
+            },
+            {
+                question: 'Dalam tenis, apa nama kompetisi beregu yang diadakan setiap tahun dan dikenal sebagai "Davis Cup"?',
+                answers: [
+                    { text: 'Kompetisi Antar Klub', correct: false },
+                    { text: 'Kejuaraan Kontinental', correct: false },
+                    { text: 'Turnamen Nasional', correct: false },
+                    { text: 'Kejuaraan Beregu Antar Negara', correct: true }
+                ]
+            },
+            {
+                question: 'Apa nama olahraga yang menggunakan sepatu roda dan dilakukan di atas es?',
+                answers: [
+                    { text: 'Hoki Es', correct: true },
+                    { text: 'Skating', correct: false },
+                    { text: 'Curling', correct: false },
+                    { text: 'Ski', correct: false }
+                ]
+            },
+            {
+                question: 'Apa nama perlombaan mendaki gunung yang paling terkenal di dunia?',
+                answers: [
+                    { text: 'Marathon', correct: false },
+                    { text: 'Ironman', correct: false },
+                    { text: 'Tour de France', correct: false },
+                    { text: 'Everest Base Camp Trek', correct: true }
+                ]
+            },
+            {
+                question: 'Apa nama turnamen golf yang diadakan setiap tahun di Augusta National Golf Club?',
+                answers: [
+                    { text: 'U.S. Open', correct: false },
+                    { text: 'The Open Championship', correct: false },
+                    { text: 'PGA Championship', correct: false },
+                    { text: 'The Masters', correct: true }
+                ]
+            },
+            {
+                question: 'Apa nama pertandingan antara tim nasional rugby dari Inggris dan Australia?',
+                answers: [
+                    { text: 'Six Nations', correct: false },
+                    { text: 'Rugby Championship', correct: false },
+                    { text: 'The Ashes', correct: true },
+                    { text: 'World Cup', correct: false }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let isHarderQuiz = false;
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            document.getElementById('score-container').classList.add('hidden');
+            document.getElementById('question-container').classList.remove('hidden');
+            showQuestion(questions[currentQuestionIndex]);
+        }
+
+        function showQuestion(question) {
+            const questionText = document.getElementById('question-text');
+            const answerButtons = document.getElementById('answer-buttons');
+            questionText.textContent = question.question;
+            answerButtons.innerHTML = '';
+            question.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.textContent = answer.text;
+                button.classList.add('answer-button');
+                button.addEventListener('click', () => selectAnswer(answer));
+                answerButtons.appendChild(button);
+            });
+        }
+
+        function selectAnswer(answer) {
+            if (answer.correct) {
+                score++;
+                document.getElementById('next-button').classList.remove('hidden');
+            } else {
+                alert('Jawaban Anda salah, coba lagi!');
+            }
+        }
+
+        function showNextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < (isHarderQuiz ? harderQuestions.length : questions.length)) {
+                showQuestion(isHarderQuiz ? harderQuestions[currentQuestionIndex] : questions[currentQuestionIndex]);
+                document.getElementById('next-button').classList.add('hidden');
+            } else {
+                showScore();
+            }
+        }
+
+        function showScore() {
+            document.getElementById('question-container').classList.add('hidden');
+            const scoreContainer = document.getElementById('score-container');
+            const scoreText = document.getElementById('score-text');
+            scoreText.textContent = `Anda menjawab ${score} dari ${isHarderQuiz ? harderQuestions.length : questions.length} pertanyaan dengan benar.`;
+            document.getElementById('next-button').classList.add('hidden');
+            scoreContainer.classList.remove('hidden');
+        }
+
+        function restartQuiz() {
+            if (isHarderQuiz) {
+                isHarderQuiz = false;
+                questions.push(...harderQuestions); // Menambahkan pertanyaan sulit kembali ke daftar
+            }
+            startQuiz();
+        }
+
+        function startHarderQuiz() {
+            isHarderQuiz = true;
+            currentQuestionIndex = 0;
+            score = 0;
+            document.getElementById('score-container').classList.add('hidden');
+            document.getElementById('question-container').classList.remove('hidden');
+            showQuestion(harderQuestions[currentQuestionIndex]);
+        }
+
+        document.getElementById('next-button').addEventListener('click', showNextQuestion);
+        document.getElementById('restart-button').addEventListener('click', restartQuiz);
+
+        startQuiz();
+    </script>
+</body>
+</html>

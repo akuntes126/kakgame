@@ -1,0 +1,91 @@
+:root {
+  box-sizing: border-box;
+  --main-color: #ff6f61; /* Coral color */
+  --hover-color: #ff8a65; /* Lighter coral for hover */
+  --text-color: #000; /* Black text color */
+}
+
+html, body, * {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--main-color);
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+#inGame {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+#result {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.games {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.option {
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  padding: 10px;
+  font-size: 2rem;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for buttons */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.option:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.option:active {
+  background-color: #d84315; /* Even darker coral on click */
+  transform: scale(1.05);
+}
