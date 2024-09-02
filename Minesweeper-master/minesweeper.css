@@ -1,0 +1,124 @@
+:root {
+  --board-border-color: #777;
+  --tile-bg-color: #e0e0e0; /* Default background for unopened tiles */
+  --tile-border-color: #ccc;
+  --tile-clicked-bg-color: #b0c4de; /* Lighter blue background for opened tiles */
+  --button-bg-color: #3498db;
+  --button-hover-bg-color: #2980b9;
+  --button-active-bg-color: #1c6692;
+  --text-color: #2c3e50;
+  --tile-text-color: #34495e;
+  --board-bg-color: #0aafd8;
+  --mine-flag-color: #e74c3c;
+  --hover-bg-color: #dcdcdc; /* Slightly darker color for hover effect on unopened tiles */
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(135deg, #2980b9, #6dd5fa, #ffffff); /* Background gradient */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  color: var(--text-color);
+  margin-top: 20px;
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#board {
+  width: 400px;
+  height: 400px;
+  border: 12px solid var(--board-border-color);
+  background-color: var(--board-bg-color);
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 15px; /* Increased corner roundness */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow for depth */
+}
+
+#board div {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--tile-border-color);
+  background-color: var(--tile-bg-color); /* Background color for unopened tiles */
+  color: var(--tile-text-color);
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px; /* Slightly more rounded corners for tiles */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for a 3D effect */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover and click animations */
+}
+
+#board div:hover {
+  background-color: var(--hover-bg-color); /* Darker background when hovering over unopened tiles */
+  transform: scale(1.05); /* Slightly enlarges tile on hover */
+}
+
+.tile-clicked {
+  background-color: var(--tile-clicked-bg-color); /* Different background for opened tiles */
+  color: #000; /* Color for text/numbers on opened tiles */
+  box-shadow: none; /* Remove shadow when clicked */
+  transform: scale(1); /* Reset scale when clicked */
+  cursor: default; /* Change the cursor to default when clicked */
+}
+
+.tile-clicked:hover {
+  transform: scale(1); /* No hover effect for clicked tiles */
+}
+
+.x1 { color: #3498db; }
+.x2 { color: #27ae60; }
+.x3 { color: #e74c3c; }
+.x4 { color: #8e44ad; }
+.x5 { color: #e67e22; }
+.x6 { color: #16a085; }
+.x7 { color: #2c3e50; }
+.x8 { color: #7f8c8d; }
+
+button {
+  width: 140px;
+  height: 50px;
+  font-size: 20px;
+  background-color: var(--button-bg-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger button shadow */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+button:hover {
+  background-color: var(--button-hover-bg-color);
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+button:active {
+  background-color: var(--button-active-bg-color);
+  transform: scale(0.95); /* Shrinks slightly when clicked */
+}
+
+#flag-button {
+  background-color: var(--mine-flag-color); /* Red background for the flag button */
+}
+
+#flag-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+#flag-button:active {
+  background-color: #a93226; /* Even darker red when clicked */
+}

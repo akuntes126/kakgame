@@ -1,0 +1,100 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #2980b9 100%); /* Gradient background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full height viewport */
+    color: white; /* White text for contrast */
+}
+
+/* Headings Styling */
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    height: 30px; /* Fixed height for smooth display of the winner */
+    text-shadow: 1px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Board Styling */
+#board {
+    height: 540px;
+    width: 630px;
+    background-color: #2c3e50; /* Dark blue-gray background */
+    border: 10px solid #34495e; /* Even darker blue-gray border */
+    border-radius: 20px; /* Rounded corners for the board */
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Larger shadow for more depth */
+    position: relative;
+}
+
+/* Tile Styling */
+.tile {
+    height: 70px;
+    width: 70px;
+    margin: 5px;
+    background-color: #ecf0f1; /* Lighter gray for tile background */
+    border-radius: 50%; /* Fully rounded */
+    border: 5px solid #2c3e50; /* Match board color */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3); /* Stronger inner shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover Effect for Tiles */
+.tile:hover {
+    transform: scale(1.1); /* Slightly enlarge tile on hover */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glowing effect */
+}
+
+/* Red and Yellow Pieces */
+.red-piece {
+    background-color: #e74c3c; /* Vibrant red */
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.7); /* Shadow effect matching piece color */
+}
+
+.yellow-piece {
+    background-color: #f1c40f; /* Bright yellow */
+    box-shadow: 0 4px 10px rgba(241, 196, 15, 0.7); /* Shadow effect matching piece color */
+}
+
+/* Restart Button Styling */
+#restartButton {
+    background-color: #e74c3c; /* Match red for more dynamic look */
+    border: none;
+    color: #ffffff;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 20px 0;
+    cursor: pointer;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Restart Button Hover Effect */
+#restartButton:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly enlarge */
+}
+
+/* Restart Button Active Effect */
+#restartButton:active {
+    background-color: #b03a2e; /* Even darker red when clicked */
+    transform: scale(0.95); /* Shrink slightly */
+}

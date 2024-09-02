@@ -1,0 +1,31 @@
+:root {
+    --background-color: #87ceeb; /* Light sky blue for fallback */
+    --board-bg-image: url('./doodlejumpbg.png');
+    --board-border: 5px solid rgba(0, 0, 0, 0.2);
+    --canvas-border-radius: 10px;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrollbars */
+  }
+  
+  #board {
+    width: 600px; /* Adjust size as needed */
+    height: 800px; /* Adjust size as needed */
+    background-image: var(--board-bg-image);
+    background-size: cover; /* Cover the entire canvas area */
+    background-position: center;
+    border: var(--board-border);
+    border-radius: var(--canvas-border-radius);
+    box-shadow: 0 4px 8px var(--shadow-color); /* Shadow effect for depth */
+  }
+  

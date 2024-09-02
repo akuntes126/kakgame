@@ -1,0 +1,55 @@
+/* General Body Styling */
+body {
+    background: url("./rot.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+/* Board Styling */
+#board {
+    width: 450px;
+    height: 450px;
+    background-color: lightblue;
+    border: 5px solid slategray;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Board Image Styling */
+#board img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Restart Button Styling */
+#restartButton {
+    background-color: #e67e22; /* Orange background */
+    border: none; /* Remove borders */
+    color: #ffffff; /* White text */
+    padding: 15px 30px; /* Padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Inline block display */
+    font-size: 18px; /* Font size */
+    margin: 20px; /* Margin around the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
+}
+
+/* Restart Button Hover Effect */
+#restartButton:hover {
+    background-color: #d35400; /* Darker orange */
+    transform: scale(1.05); /* Slightly enlarge */
+}
+
+/* Restart Button Active Effect */
+#restartButton:active {
+    background-color: #c0392b; /* Redder orange */
+    transform: scale(0.95); /* Slightly shrink */
+}
