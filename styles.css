@@ -1,0 +1,197 @@
+/* Base Styles */
+body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo img {
+    height: 40px;
+    width: auto;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+header .search input {
+    padding: 5px;
+}
+
+.hero {
+    background: url('hero-image.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.hero button {
+    padding: 10px 20px;
+    background-color: #ff5722;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.game-list {
+    padding: 20px;
+    text-align: center;
+}
+
+.game-item {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.game-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative; /* Changed from absolute to relative for better responsiveness */
+    width: 100%;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    footer p {
+        font-size: 14px; /* Adjusted font size for readability on tablets */
+    }
+
+    footer a {
+        margin: 0 8px; /* Slightly larger margin for better spacing on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    footer p {
+        font-size: 12px; /* Adjusted font size for mobile devices */
+        line-height: 1.4; /* Adjust line height for better readability */
+    }
+
+    footer a {
+        display: block; /* Stack links vertically */
+        margin: 5px 0; /* Space out links vertically */
+    }
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header .logo img {
+        height: 30px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin: 5px 0;
+    }
+
+    header .search input {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .game-item {
+        margin: 5px;
+    }
+
+    .game-item img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 5px;
+    }
+
+    header .logo img {
+        height: 25px;
+    }
+
+    header nav ul li {
+        margin: 3px 0;
+    }
+
+    header .search input {
+        padding: 8px;
+    }
+
+    .game-item img {
+        width: 100px;
+        height: 100px;
+    }
+
+    footer {
+        font-size: 12px;
+        position: static;
+    }
+}
+.button {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #949494, #f79748);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.3s, transform 0.3s;
+}
