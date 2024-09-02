@@ -1,0 +1,63 @@
+/* Global Styles */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #000000;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  overflow: hidden; /* Prevents scrollbars from appearing */
+}
+
+h3 {
+  color: #ffffff;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Canvas Animation */
+canvas {
+  border: 5px solid #7e7e7e;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  display: block;
+  animation: pulse 2s infinite alternate;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  to {
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  canvas {
+    width: 90%;
+    height: auto;
+  }
+}
