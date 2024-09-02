@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Sejarah Indonesia</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+           background-image: url('C:/PKL/Game HTML/sejarah-indonesia/sej.jpeg');
+           
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .quiz-container {
+            background: #b37431 ;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 350px;
+            max-width: 90%;
+            position: relative;
+        }
+        h1 {
+            font-size: 28px;
+            color: #000000;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        button {
+            width: calc(100% - 20px);
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #00ff33, #0056b3);
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #0056b3, #003d7a);
+            transform: translateY(-2px);
+        }
+        button:active {
+            background: linear-gradient(45deg, #003d7a, #002d5a);
+            transform: translateY(1px);
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        #nextQuestionButton {
+            background: #a2960f;
+            border: none;
+            margin-top: 20px;
+        }
+        #nextQuestionButton:hover {
+            background: #218838;
+        }
+        #nextQuestionButton:active {
+            background: #1e7e34;
+        }
+        @media (max-width: 600px) {
+            .quiz-container {
+                width: 100%;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz Sejarah Indonesia</h1>
+        <div class="question">Siapa Presiden Pertama Indonesia?</div>
+        <button onclick="checkAnswer(this)">Soekarno</button>
+        <button onclick="checkAnswer(this)">Suharto</button>
+        <button onclick="checkAnswer(this)">Jokowi</button>
+        <button onclick="checkAnswer(this)">Habibie</button>
+
+        <div id="result"></div>
+        <button id="nextQuestionButton" onclick="nextQuestion()">Soal Berikutnya</button>
+    </div>
+
+    <script type="text/javascript">
+        var questions = [
+            {
+                question: "Siapa Presiden Pertama Indonesia?",
+                correctAnswer: "Soekarno",
+                options: ["Soekarno", "Suharto", "Jokowi", "Habibie"]
+            },
+            {
+                question: "Apa nama Ibu Kota Indonesia?",
+                correctAnswer: "Jakarta",
+                options: ["Jakarta", "Surabaya", "Bandung", "Medan"]
+            },
+            {
+                question: "Dalam tahun berapa Indonesia Merdeka?",
+                correctAnswer: "1945",
+                options: ["1945", "1950", "1965", "1970"]
+            },
+            {
+                question: "Siapa pahlawan nasional yang dikenal sebagai Bapak Proklamasi?",
+                correctAnswer: "Soekarno",
+                options: ["Soekarno", "Jenderal Sudirman", "R.A. Kartini", "B.J. Habibie"]
+            },
+            {
+                question: "Siapa yang memproklamasikan kemerdekaan Indonesia bersama Soekarno?",
+                correctAnswer: "Mohammad Hatta",
+                options: ["Mohammad Hatta", "Suharto", "Jenderal Sudirman", "B.J. Habibie"]
+            },
+            {
+                question: "Apa nama lembaga yang pertama kali menyusun Undang-Undang Dasar 1945?",
+                correctAnswer: "BPUPKI",
+                options: ["BPUPKI", "Pancasila", "MPR", "DPR"]
+            },
+            {
+                question: "Pada tanggal berapa Proklamasi Kemerdekaan Indonesia diumumkan?",
+                correctAnswer: "17 Agustus 1945",
+                options: ["17 Agustus 1945", "19 September 1945", "1 Januari 1946", "20 Mei 1945"]
+            },
+            {
+                question: "Siapa yang menjadi presiden Indonesia setelah Soekarno?",
+                correctAnswer: "Suharto",
+                options: ["Suharto", "Jokowi", "Habibie", "B.J. Habibie"]
+            },
+            {
+                question: "Dalam Perang Dunia II, negara manakah yang menjajah Indonesia sebelum kemerdekaan?",
+                correctAnswer: "Jepang",
+                options: ["Jepang", "Belanda", "Inggris", "Amerika Serikat"]
+            },
+            {
+                question: "Siapa yang dikenal sebagai Bapak Pendidikan Nasional Indonesia?",
+                correctAnswer: "Ki Hajar Dewantara",
+                options: ["Ki Hajar Dewantara", "R.A. Kartini", "Soekarno", "Jenderal Sudirman"]
+            }
+        ];
+
+        var currentQuestionIndex = 0;
+        var score = 0;
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function loadQuestion() {
+            var question = questions[currentQuestionIndex];
+            document.querySelector('.question').textContent = question.question;
+
+            // Shuffle options and update buttons
+            var options = [...question.options];
+            shuffleArray(options);
+            var buttons = document.querySelectorAll('.quiz-container button');
+            buttons.forEach((button, index) => {
+                if (index < buttons.length - 1) { // Don't change the last button (Next Question)
+                    button.textContent = options[index];
+                    button.setAttribute('data-answer', options[index]);
+                }
+            });
+        }
+
+        function checkAnswer(button) {
+            var selectedAnswer = button.textContent;
+            var question = questions[currentQuestionIndex];
+            var result = document.getElementById('result');
+
+            console.log(`Selected Answer: ${selectedAnswer}`);
+            console.log(`Correct Answer: ${question.correctAnswer}`);
+
+            if (selectedAnswer === question.correctAnswer) {
+                result.textContent = "Jawaban Benar!";
+                result.style.color = "#28a745"; // Green for correct
+                score++;
+            } else {
+                result.textContent = "Jawaban Salah!";
+                result.style.color = "#dc3545"; // Red for incorrect
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+                document.getElementById('result').textContent = "";
+            } else {
+                document.querySelector('.question').textContent = `Quiz selesai! Skor Anda: ${score}/${questions.length}`;
+                document.getElementById('nextQuestionButton').style.display = 'none';
+                document.querySelectorAll('.quiz-container button').forEach((button) => {
+                    if (button !== document.getElementById('nextQuestionButton')) {
+                        button.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        window.onload = function() {
+            loadQuestion();
+        }
+    </script>
+</body>
+</html>
