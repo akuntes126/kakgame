@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis Bahasa Indonesia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ffffff, #000000); /* Gradasi dari merah muda ke oranye */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .quiz-container {
+      background: linear-gradient(to left,#ffffff, #000000);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    .question-number {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .options {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(to right, #ffffff, #000000); /* Gradasi biru */
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+    }
+    button:hover {
+      background: linear-gradient(to right, #ffffff, #000000); /* Gradasi biru lebih gelap */
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <h1>Kuis Bahasa Indonesia</h1>
+  <p class="question-number">1 / 10 Soal</p>
+  <p id="question">Apa sinonim dari kata "besar"?</p>
+  <div class="options">
+    <label><input type="radio" name="option" value="A">Kecil</label>
+    <label><input type="radio" name="option" value="B">Luas</label>
+    <label><input type="radio" name="option" value="C">Pendek</label>
+    <label><input type="radio" name="option" value="D">Tinggi</label>
+  </div>
+  <button onclick="checkAnswer()">Kirim Jawaban</button>
+  <button onclick="restartQuiz()">Mulai Ulang</button>
+  <p id="result"></p>
+</div>
+
+<script>
+  const questions = [
+    {
+      question: "Apa sinonim dari kata 'besar'?",
+      options: ["Kecil", "Luas", "Pendek", "Tinggi"],
+      answer: "B"
+    },
+    {
+      question: "Apa antonim dari kata 'tinggi'?",
+      options: ["Panjang", "Pendek", "Kecil", "Tipis"],
+      answer: "B"
+    },
+    {
+      question: "Apa kata kerja dari 'makan'?",
+      options: ["Memakan", "Dimakan", "Makanan", "Makani"],
+      answer: "A"
+    },
+    {
+      question: "Apa bentuk jamak dari kata 'rumah'?",
+      options: ["Rumah-rumah", "Ruma-ruma", "Banyak rumah", "Para rumah"],
+      answer: "A"
+    },
+    {
+      question: "Apa lawan kata dari 'terang'?",
+      options: ["Gelap", "Besar", "Panas", "Bersinar"],
+      answer: "A"
+    },
+    {
+      question: "Apa arti dari kata 'cepat'?",
+      options: ["Lambat", "Kilatan", "Lekas", "Cepat sekali"],
+      answer: "C"
+    },
+    {
+      question: "Apa bentuk kata sifat dari kata 'bersih'?",
+      options: ["Bersihan", "Pembersih", "Tercemar", "Kotor"],
+      answer: "A"
+    },
+    {
+      question: "Apa bentuk pasif dari 'Dia menulis buku'?",
+      options: ["Buku ditulis oleh dia", "Buku ditulis olehnya", "Dia ditulis buku", "Dia menulis buku"],
+      answer: "B"
+    },
+    {
+      question: "Apa arti dari kata 'sederhana'?",
+      options: ["Tidak rumit", "Sederet", "Jelas", "Berlebihan"],
+      answer: "A"
+    },
+    {
+      question: "Apa lawan kata dari 'dingin'?",
+      options: ["Hangat", "Bekuan", "Es", "Panas"],
+      answer: "D"
+    }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    const questionData = questions[currentQuestion];
+    document.querySelector(".question-number").textContent = `${currentQuestion + 1} / 10 Soal`;
+    document.getElementById("question").textContent = questionData.question;
+
+    const options = document.querySelectorAll(".options label");
+    options.forEach((label, index) => {
+      label.textContent = `${String.fromCharCode(65 + index)}. ${questionData.options[index]}`;
+      label.querySelector("input").value = String.fromCharCode(65 + index);
+    });
+
+    // Reset pilihan jawaban
+    document.querySelector('input[name="option"]:checked')?.checked = false;
+    document.getElementById("result").textContent = '';
+  }
+
+  function checkAnswer() {
+    const selectedOption = document.querySelector('input[name="option"]:checked');
+
+    if (!selectedOption) {
+      alert("Pilih jawaban terlebih dahulu!");
+      return;
+    }
+
+    const userAnswer = selectedOption.value;
+    const correctAnswer = questions[currentQuestion].answer;
+
+    if (userAnswer === correctAnswer) {
+      score++;
+    }
+
+    currentQuestion++;
+    
+    // Periksa apakah masih ada pertanyaan berikutnya
+    if (currentQuestion < questions.length) {
+      loadQuestion();
+    } else {
+      document.getElementById("result").textContent = `Kuis selesai! Skor Anda: ${score} dari 10`;
+      document.querySelector('button[onclick="checkAnswer()"]').style.display = "none"; // Sembunyikan tombol kirim jawaban
+    }
+  }
+
+  function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    document.querySelector('button[onclick="checkAnswer()"]').style.display = "block"; // Tampilkan kembali tombol kirim jawaban
+    loadQuestion();
+  }
+
+  loadQuestion();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('gem.jpg');
+      padding: 20px;
+    }
+    .quiz-container {
+      background-color: rgb(87, 205, 252);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .submit-btn:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h1>English Quiz</h1>
+
+    <div class="question">
+      1. What is the correct past tense of the verb "run"?
+    </div>
+    <div class="options">
+      <label><input type="radio" name="question1" value="ran"> Ran</label>
+      <label><input type="radio" name="question1" value="runned"> Runned</label>
+      <label><input type="radio" name="question1" value="running"> Running</label>
+    </div>
+
+    <div class="question">
+      2. Choose the correct sentence.
+    </div>
+    <div class="options">
+      <label><input type="radio" name="question2" value="A"> He are a good player.</label>
+      <label><input type="radio" name="question2" value="B"> He is a good player.</label>
+      <label><input type="radio" name="question2" value="C"> He were a good player.</label>
+    </div>
+
+    <div class="question">
+      3. What is the plural form of "child"?
+    </div>
+    <div class="options">
+      <label><input type="radio" name="question3" value="childs"> Childs</label>
+      <label><input type="radio" name="question3" value="children"> Children</label>
+      <label><input type="radio" name="question3" value="childrens"> Childrens</label>
+    </div>
+
+    <div class="question">
+      4. Fill in the blank: "She _____ to the store yesterday."
+    </div>
+    <div class="options">
+      <label><input type="radio" name="question4" value="goes"> Goes</label>
+      <label><input type="radio" name="question4" value="went"> Went</label>
+      <label><input type="radio" name="question4" value="going"> Going</label>
+    </div>
+
+    <div class="question">
+      5. What is the antonym of "happy"?
+    </div>
+    <div class="options">
+      <label><input type="radio" name="question5" value="sad"> Sad</label>
+      <label><input type="radio" name="question5" value="angry"> Angry</label>
+      <label><input type="radio" name="question5" value="tired"> Tired</label>
+    </div>
+
+    <div class="question">
+      6. Which word is a noun?
+    </div>
+    <div class="options">
+      <label><input type="radio" name="question6" value="run"> Run</label>
+      <label><input type="radio" name="question6" value="quickly"> Quickly</label>
+      <label><input type="radio" name="question6" value="book"> Book</label>
+    </div>
+
+    <div class="question">
+      7. Choose the correct sentence.
+    </div>
+    <div class="options">
+      <label><input type="radio" name="question7" value="A"> They doesn't like pizza.</label>
+      <label><input type="radio" name="question7" value="B"> They don't like pizza.</label>
+      <label><input type="radio" name="question7" value="C"> They don't likes pizza.</label>
+    </div>
+
+    <div class="question">
+      8. What is the synonym of "big"?
+    </div>
+    <div class="options">
+      <label><input type="radio" name="question8" value="small"> Small</label>
+      <label><input type="radio" name="question8" value="large"> Large</label>
+      <label><input type="radio" name="question8" value="tiny"> Tiny</label>
+    </div>
+
+    <div class="question">
+      9. What is the correct form of the verb in this sentence: "She _____ in the park every day."
+    </div>
+    <div class="options">
+      <label><input type="radio" name="question9" value="run"> Run</label>
+      <label><input type="radio" name="question9" value="runs"> Runs</label>
+      <label><input type="radio" name="question9" value="running"> Running</label>
+    </div>
+
+    <div class="question">
+      10. Fill in the blank: "I have _____ apples in my bag."
+    </div>
+    <div class="options">
+      <label><input type="radio" name="question10" value="some"> Some</label>
+      <label><input type="radio" name="question10" value="any"> Any</label>
+      <label><input type="radio" name="question10" value="none"> None</label>
+    </div>
+
+    <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+
+    <div class="result"></div>
+  </div>
+
+  <script>
+    function submitQuiz() {
+      var score = 0;
+      var totalQuestions = 10;
+
+      var q1 = document.querySelector('input[name="question1"]:checked');
+      var q2 = document.querySelector('input[name="question2"]:checked');
+      var q3 = document.querySelector('input[name="question3"]:checked');
+      var q4 = document.querySelector('input[name="question4"]:checked');
+      var q5 = document.querySelector('input[name="question5"]:checked');
+      var q6 = document.querySelector('input[name="question6"]:checked');
+      var q7 = document.querySelector('input[name="question7"]:checked');
+      var q8 = document.querySelector('input[name="question8"]:checked');
+      var q9 = document.querySelector('input[name="question9"]:checked');
+      var q10 = document.querySelector('input[name="question10"]:checked');
+
+      if (q1 && q1.value === "ran") score++;
+      if (q2 && q2.value === "B") score++;
+      if (q3 && q3.value === "children") score++;
+      if (q4 && q4.value === "went") score++;
+      if (q5 && q5.value === "sad") score++;
+      if (q6 && q6.value === "book") score++;
+      if (q7 && q7.value === "B") score++;
+      if (q8 && q8.value === "large") score++;
+      if (q9 && q9.value === "runs") score++;
+      if (q10 && q10.value === "some") score++;
+
+      document.querySelector('.result').innerHTML = 
+        "You scored " + score + " out of " + totalQuestions + "!";
+    }
+  </script>
+
+</body>
+</html>
