@@ -1,0 +1,142 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #333; /* Darker background color */
+    color: #f5f5f5; /* Light text color for better contrast */
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    font-size: 4em;
+    color: #f5f5f5; /* Light text color for better contrast */
+    margin: 0;
+}
+
+hr {
+    width: 400px;
+    border: 1px solid #555; /* Darker border color */
+    margin: 20px auto;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #e0e0e0; /* Light text color */
+    margin: 20px 0;
+}
+
+#board {
+    width: 400px;
+    height: 400px;
+    background-color: #2b2a2b; /* Darker background color for the board */
+    border-radius: 10px;
+    border: 6px solid #444; /* Darker border color */
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Darker shadow for a more pronounced effect */
+}
+
+.tile {
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+    border-radius: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff; /* White text color for better contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow for the tiles */
+}
+
+/* colored tiles */
+
+.x2 {
+    background-color: #3e3a39; /* Darker color */
+}
+
+.x4 {
+    background-color: #5c5a50; /* Slightly lighter color */
+}
+
+.x8 {
+    background-color: #f57c5f;
+    color: #fff;
+}
+
+.x16 {
+    background-color: #f57c5f;
+    color: #fff;
+}
+
+.x32 {
+    background-color: #f57c5f;
+    color: #fff;
+}
+
+.x64 {
+    background-color: #f57c5f;
+    color: #fff;
+}
+
+.x128 {
+    background-color: #edcf72;
+    color: #fff;
+}
+
+.x256 {
+    background-color: #edcc61;
+    color: #fff;
+}
+
+.x512 {
+    background-color: #edc850;
+    color: #fff;
+}
+
+.x1024 {
+    background-color: #edc53f;
+    color: #fff;
+}
+
+.x2048 {
+    background-color: #edc22e;
+    color: #fff;
+}
+
+.x4096 {
+    background-color: #fe3d3d;
+    color: #fff;
+}
+
+.x8192 {
+    background-color: #f31d1d;
+    color: #fff;
+}
+
+#restart-button {
+    background-color: #8c9eff;
+    border: none;
+    color: #fff;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 20px 0;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Darker shadow */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#restart-button:hover {
+    background-color: #5c6bc0;
+    transform: scale(1.05);
+}
+
+#restart-button:active {
+    background-color: #3f51b5;
+    transform: scale(0.95);
+}

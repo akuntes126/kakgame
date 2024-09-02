@@ -1,0 +1,82 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #2c3e50, #34495e);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#game-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+#dealer-cards, #your-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+#dealer-cards img, #your-cards img {
+    height: 175px;
+    width: 125px;
+    margin: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#dealer-cards img:hover, #your-cards img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+}
+
+button {
+    width: 120px;
+    height: 50px;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    color: #fff;
+}
+
+#hit {
+    background: linear-gradient(45deg, #1e90ff, #00bfff);
+}
+
+#stay {
+    background: linear-gradient(45deg, #32cd32, #00ff7f);
+}
+
+#restart {
+    background: linear-gradient(45deg, #ff6347, #ff4500);
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+button:active {
+    opacity: 0.8;
+    transform: scale(0.95);
+}
+
+#results {
+    font-size: 20px;
+    margin-top: 20px;
+}
